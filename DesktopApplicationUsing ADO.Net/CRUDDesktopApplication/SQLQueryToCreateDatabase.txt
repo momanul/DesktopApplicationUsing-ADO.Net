@@ -1,0 +1,47 @@
+﻿Create Database ProductDB
+go
+Use ProductDB
+go
+CREATE TABLE Categories
+(
+	CategoryID int IDENTITY(100,1) NOT NULL primary key,
+	ShortName nvarchar(150) NOT NULL,
+	LongName nvarchar(250) NOT NULL
+)
+go
+CREATE TABLE Products(
+	ProductID int IDENTITY(1000,1) NOT NULL,
+	Name varchar(20) NULL,
+	ShortDescription nvarchar(250) NULL,
+	LongDescription nvarchar(500) NULL,
+	CategoryID int NULL,
+	UnitPrice decimal(18, 3) NULL
+)
+go
+insert into Categories values('Electronics', 'Electronics Home Element')
+insert into Categories values('Music', 'Musical Instrument')
+insert into Categories values('Clothes', 'Clothes for all ages people')
+insert into Categories values('Toy', 'Toy for babies')
+insert into Categories values('Cosmetics', 'Cosmetics for all ages people')
+go
+insert into Products
+values('TV Stick 4K', 'TV Stick 4K with Alexa Voice Remote', 'Certified Refurbished Fire TV Stick 4K with Alexa Voice Remote, streaming media player', 100, 110.2),
+('Microphone', 'FM Radio for Cellphones', 'FX-Viktaria Over Ear Headphones, Headset with Microphone, Foldable and Lightweight, Support TF Card, USB Charging Headset, MP3 Mode ', 100, 110.2),
+('Snorkeling Mask', 'HJKB Full Face Snorkel Mask', 'Snorkeling Mask for Adults and Kids with Detachable Camera Mount, 180 Degree Large View Dry Top Set Anti-Fog Anti-Leak', 100, 120.2),
+('Snorkel Mask', 'HENGBIRD', 'Set with 180° Panoramic View Free Breathing Detachable Sport Camera Mount Anti-Fog Anti-Leak Snorkeling Diving Gear for Adults & Kids', 100, 110.2),
+('Smartphone', 'Total Wireless LG Rebel', 'Total Wireless LG Rebel 4 4G LTE Prepaid Smartphone with $35 Airtime Bundle', 100, 310.2),
+('Guitar', 'Donner DAG-1C Beginner', 'Donner DAG-1C Beginner Acoustic Guitar Full Size, 41" Cutaway Guitar Bundle with Gig Bag Tuner Capo Picks Strap String', 101, 10.2),
+('Guitar', 'Best Choice Products 38in', 'Best Choice Products 38in Beginner Acoustic Guitar Starter Kit w/ Case, Strap, Digital E-Tuner', 101, 104.2),
+('Piano', 'Piano', 'Electric Piano Pro HD', 101, 140.2),
+('Microphone', 'Microphone', 'Pro Microphone', 101, 410.2),
+('Strapless', 'Kurve Strapless Stretchy', 'Kurve Strapless Stretchy Comfort Mini Sexy Tube Dress (XS/M, M/L, L/XL, XL/XXL) -Made in USA-', 102, 410.2),
+('XAKALAKA', 'Women\''s Sexy Lace', 'Sexy Lace Off Shoulder High Wasit Flared Mesh Club Maxi Dress S-XXXL', 102, 410.2),
+('Bikini', 'Pink Queen Women', 'Removable Strap Wrap Pad Cheeky High Waist Bikini Set Swimsuit', 102, 410.2),
+('Building', 'LEGO City Heavy', 'LEGO City Heavy Cargo Transport 60183 Building Kit (310 Piece)', 103, 410.2),
+('Hanging Toiletry', 'Hanging Toiletry', 'SLHFPX Hanging Toiletry Bag Butterfly Watercolor Waterproof Wash Bag Makeup Organizer for ', 104, 410.2),
+('Toiletry', 'Hanging Toiletry', 'Hanging Toiletry Bag Folding Portable, Travel Toiletry Organizer Kit For Women Cosmetic Makeup', 104, 410.2),
+('Roader', 'Roader', 'LEGO CITY 4 x 4 Off Roader 60115', 103, 410.2),
+('Trailer', 'Vehicles Dun', 'LEGO City Great Vehicles Dune Buggy Trailer', 103, 410.2)
+go
+Select ProductID, Name, ShortName, LongName, ShortDescription, LongDescription, Products.CategoryID, UnitPrice from Products
+full join Categories on Categories.CategoryID = Products.CategoryID;
